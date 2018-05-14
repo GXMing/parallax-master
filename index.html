@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/index_C.css" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.parallax.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        body{
+            background-color: #0c0c0c;
+        }
+
+        .main{
+            overflow: hidden;
+        }
+
+
+        .center-img-box{
+            position: relative;
+            width: 100%;
+            height: 700px;
+        }
+        .center-bg{
+            position: absolute;
+            top: 0;
+            width: 50%;
+            overflow: hidden;
+            height: 700px;
+            transition: width .4s;
+        }
+        .l-bg{
+            left: 0;
+        }
+        .r-bg{
+            right:0;
+        }
+        .l-bg-img,.r-bg-img{
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 1920px 1080px;
+            width: 100%;
+            height: 700px;
+        }
+        .r-video,.l-video{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top:-540px;
+            margin-left: -960px;
+            opacity: 0;
+            transition: opacity .4s;
+        }
+
+
+        .center-img-box:hover .r-bg,
+        .center-img-box:hover .l-bg{
+            width: 42%;
+        }
+        .center-img-box:hover .r-bg:hover,
+        .center-img-box:hover .l-bg:hover{
+            width: 58%;
+        }
+        .center-img-box .r-bg:hover .r-video,
+        .center-img-box .l-bg:hover .l-video{
+            opacity: 1;
+        }
+
+
+
+        .after-bg{
+            width: 100%;
+            height: 700px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .after-bg .item-box{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-position: center;
+            width: 300px;
+            height: 700px;
+            overflow: hidden;
+        }
+        .after-bg .item-box:nth-child(2){
+            left: auto;
+            right: 0;
+        }
+        .after-bg .item-box .after-l,
+        .after-bg .item-box .after-r{
+            height:700px;
+            width:388px;
+            background-position: center;
+        }
+
+
+        .change-btn{
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+            height: 60px;
+            overflow: hidden;
+            display: none;
+        }
+        .change-btn.l-btn{
+            right: 100px;
+        }
+        .change-btn.r-btn{
+            left: 100px;
+        }
+        .change-btn p{
+            line-height: 60px;
+            padding:0 20px;
+            background-color: rgba(0,0,0,0.5);
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            transition: .4s transform;
+            cursor: pointer;
+        }
+        .change-btn p:hover{
+            transform: translateY(-60px);
+        }
+        .change-btn span{
+            display: block;
+            width: 100%;
+            padding: 0 20px;
+            margin-left: -20px;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header"></header>
+
+    <!-- 主体 -->
+    <div class="main">
+        <div class="main-content-box scene">
+                <div class="after-bg">
+                    <div class="item-box">
+                        <div class="after-l" style="background-image:url(./apes-background-01.jpg);"></div>
+                    </div>
+                    <div class="item-box">
+                        <div class="after-r" style="background-image:url(./humans-background-01.jpg);"></div>
+                    </div>
+                </div>
+                <div class="center-img-box layer" data-depth="0.80">
+                    <!-- <div class="l-bg layer" data-depth="0.00">
+                        <div class="l-bg-img" style="background-image:url(./apes-scene-bw-01.jpg);"></div>
+                    </div>
+                    
+                    <div class="r-bg layer"   data-depth="0.20">
+                        
+                    </div> -->
+                    <div class="l-bg center-bg parallax-bg">
+                        <div class="l-bg-img"  style="background-image:url(./humans-scene-bw-01.jpg);"></div>
+                        <div class="l-video video-box ">
+                            <video class="layer" data-depth="0.80" src="./Teaser-Humans-01.mp4" autoplay="autoplay" preload="auto" loop width="1920px" height="1080px" type="video/mp4"></video>
+                        </div>
+                        <div class="l-btn change-btn">
+                            <p>SAN FRANCISCO<br><span>SAN FRANCISCO</span></p>
+                        </div>
+                    </div>
+                    <div class="r-bg center-bg parallax-bg" >
+                        <div class="r-bg-img"  style="background-image:url(./apes-scene-bw-01.jpg);"></div>
+                        <div class="r-video video-box">
+                            <video class="layer" data-depth="0.80" src="./Teaser-Apes-01.webm" autoplay="autoplay" preload="auto" loop width="1920px" height="1080px" type="video/webm"></video>
+                        </div>
+                        <div class="r-btn change-btn">
+                            <p>SAN FRANCISCO<br><span>SAN FRANCISCO</span></p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+ 
+    <!-- <ul id="scene">
+            
+            <li class="layer" data-depth="0.40"><img src="layer4.png"></li>
+            <li class="layer" data-depth="0.60"><img src="layer3.png"></li>
+            <li class="layer" data-depth="0.80"><img src="layer2.png"></li>
+            <li class="layer" data-depth="1.00"><img src="layer1.png"></li>
+          </ul> -->
+    <!-- 尾部 -->
+    <footer class="footer"></footer>
+
+
+    <script>
+
+        // Pretty simple huh?
+        $('.scene').parallax({
+            calibrateX: false,
+            calibrateY: false,
+            invertX: true,
+            invertY: false,
+            limitX: 600,
+            limitY: false,
+            scalarX: 14,
+            scalarY: false,
+            frictionX: 0.1,
+            frictionY: false
+        });
+        
+        var rVideo = $(".r-video").parallax({
+                calibrateX: false,
+                calibrateY: true,
+                invertX: false,
+                invertY: true,
+                limitX: false,
+                limitY: 10,
+                scalarX: 2,
+                scalarY: 8,
+                frictionX: 0.2,
+                frictionY: 0.8,
+        });
+        var lVideo = $(".l-video").parallax({
+                calibrateX: false,
+                calibrateY: true,
+                invertX: false,
+                invertY: true,
+                limitX: false,
+                limitY: 10,
+                scalarX: 2,
+                scalarY: 8,
+                frictionX: 0.2,
+                frictionY: 0.8,
+        })
+        rVideo.parallax('limit', false, 0); 
+        lVideo.parallax('limit', false, 0);
+        
+        
+
+        function changefun(obj){
+            var Tindex = obj.index()
+            $(".after-bg .item-box").eq(Tindex).css("z-index",10).siblings(".item-box").css("z-index","auto")
+            obj.width("100%").siblings(".parallax-bg").width("0");
+            obj.find(".change-btn").show();
+            obj.find(".video-box").css("opacity","1").parallax('limit', false, 600);
+        }
+
+        $(".parallax-bg").on("click",function(){
+            changefun($(this))
+        })
+        $(".parallax-bg .change-btn").on("click",function(){
+            var obj = $(this).parent().siblings(".parallax-bg").eq(0);
+            changefun(obj);
+            return false;
+        })
+    </script>
+</body>
+</html>
